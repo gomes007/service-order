@@ -1,23 +1,18 @@
 package com.softwarehouse.serviceorder.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 @Table(name = "employee")
-public class Employee extends Salary{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
-
+@EqualsAndHashCode(callSuper = true)
+public class Employee extends Entidade {
     @Embedded
     private GeneralInformation generalInformation;
 
@@ -27,6 +22,11 @@ public class Employee extends Salary{
 
     private Double commission;
 
+    @OneToOne
+    @JoinColumn(name = "employee_id")
     private Salary salary;
 
+    @JoinColumn(name = "employee_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Address> addresses;
 }

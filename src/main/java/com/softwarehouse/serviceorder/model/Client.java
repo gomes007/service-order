@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,13 +27,14 @@ public class Client {
 
     private LocalDate birthDate;
 
-    private Double creditLimit;
+    private BigDecimal creditLimit;
 
-    private Boolean creditLimitExceeded;
+    private boolean creditLimitExceeded;
 
     @Embedded
     private GeneralInformation generalInformation;
 
-
-
+    @JoinColumn(name = "client_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Address> addresses;
 }

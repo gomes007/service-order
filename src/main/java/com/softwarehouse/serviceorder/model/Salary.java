@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
@@ -18,6 +19,6 @@ public class Salary {
     private Long id;
 
     private String position;
-    private Double salary;
+    private BigDecimal salary;
 
 }

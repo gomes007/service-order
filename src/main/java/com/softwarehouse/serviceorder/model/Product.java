@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -24,9 +25,20 @@ public class Product {
     private String weight;
     private String height;
     private String length;
-    private String details;
+    private String description;
     private String commission;
 
+    @Embedded
+    private Details details;
 
+    @Embedded
+    private Price price;
 
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    private Inventory inventory;
+
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    private Provider provider;
 }

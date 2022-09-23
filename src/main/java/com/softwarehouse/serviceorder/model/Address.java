@@ -26,4 +26,11 @@ public class Address {
     private String city;
     private String state;
 
+    @OneToOne
+    @JoinTable(
+            name = "address_address_type",
+            joinColumns = @JoinColumn(name = "address_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_type_id")
+    )
+    private AddressType addressType;
 }

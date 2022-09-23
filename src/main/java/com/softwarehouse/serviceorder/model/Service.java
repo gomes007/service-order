@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -20,13 +21,8 @@ public class Service {
     private Long id;
 
     private String serviceName;
-    private Double unitCost;
-    private Double commission;
+    private BigDecimal unitCost;
+    private BigDecimal commission;
     private String description;
-
-
-
-
-
 
 }
